@@ -62,7 +62,7 @@ $faq = $db_handle->runQuery($sql);
 
   </script>
 
-  
+
   <!-- datatables script -->
   <script type="text/javascript" language="javascript" >
     $(document).ready(function() {
@@ -153,24 +153,28 @@ $faq = $db_handle->runQuery($sql);
   </div>
 
   <!-- Applicant name -->
-<!--   <div class="contianer">
-		<div class="form-group">
-		<label class="col-md-4 control-label">Last Name</label>
-		<div class="col-md-4 selectContainer">
-			<div class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-				<select name="name" class="form-control selectpicker">
-					<?php 
-					$db_handle2 = new DBController();
-					$db_handle->selectQuery("Select applicant.appid, applicant.LastName from applicant");
-					?>
-				</select>
-			</div>
-		</div>
-		</div>  	
-  </div>
+ <div class="contianer">
+  <form class = "well form-horizontal" action ="index.php" method="post">
+      <fieldset>
+        <div class="form-group">
+    <label class="col-md-4 control-label">Last Name</label>
+    <div class="col-md-4 selectContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+        <select name="name" class="form-control selectpicker">
+          <?php 
+          $db_handle2 = new DBController();
+          $db_handle->selectQuery("Select applicant.appid, applicant.LastName from applicant");
+          ?>
+        </select>
+      </div>
+    </div>
+    </div>
+  </fieldset>
+  </form>
 
- -->
+  	
+  </div>
   
 </body>
 

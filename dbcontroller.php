@@ -14,6 +14,13 @@ class DBController {
 		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
 		return $conn;
 	}
+
+	function selectQuery($query){
+		$result =mysqli_query($this->conn, $query) or die ("bad query");
+		while($row = mysqli_fetch_array($result)){
+			echo '<option value"'. $row[0] . '"> ' .$row[1] . '</option>';
+		}
+	}
 	
 	function runQuery($query) {
 		$result = mysqli_query($this->conn,$query);
