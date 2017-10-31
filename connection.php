@@ -57,4 +57,8 @@
                 </tr>';
         }
 	}
+
+	function updateQuery($con){
+		
+	}
 ?>

@@ -18,7 +18,7 @@ class DBController {
 	function selectQuery($query){
 		$result =mysqli_query($this->conn, $query) or die ("bad query");
 		while($row = mysqli_fetch_array($result)){
-			echo '<option value"'. $row[0] . '"> ' .$row[1] . '</option>';
+			echo '<option value="'. $row[0] . '"> ' .$row[1] . '</option>';
 		}
 	}
 	
@@ -40,6 +40,8 @@ class DBController {
         $result = mysqli_query($this->conn,$query);        
 		return $result;		
     }
+
+    
 
 }
 ?>

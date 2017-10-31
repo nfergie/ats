@@ -1,5 +1,6 @@
 <?php
 require_once("dbcontroller.php");
+
 $db_handle = new DBController();
 $sql = "Select applicant.AppID, 
   applicant.FirstName, 
@@ -18,6 +19,8 @@ inner join hiringemp
 inner join employee 
   on employee.empid = hiringemp.empid";
 $faq = $db_handle->runQuery($sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -152,16 +155,17 @@ $faq = $db_handle->runQuery($sql);
     </div>
   </div>
 
-  <!-- Applicant name -->
+  
  <div class="contianer">
-  <form class = "well form-horizontal" action ="index.php" method="post">
+  <form class = "well form-horizontal" action ="stageUpdate.php" name="stageForm" id="stageForm" method="post">
       <fieldset>
+        <!-- Applicant name -->
         <div class="form-group">
     <label class="col-md-4 control-label">Last Name</label>
     <div class="col-md-4 selectContainer">
       <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-        <select name="name" class="form-control selectpicker">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <select name="name" id="name" class="form-control selectpicker">
           <?php 
           $db_handle2 = new DBController();
           $db_handle->selectQuery("Select applicant.appid, applicant.LastName from applicant");
@@ -170,6 +174,32 @@ $faq = $db_handle->runQuery($sql);
       </div>
     </div>
     </div>
+
+        <!-- Stage Name -->
+        <div class="form-group">
+    <label class="col-md-4 control-label">Stage</label>
+    <div class="col-md-4 selectContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+        <select name="stageid" id ="stageid" class="form-control selectpicker">
+          <?php 
+          $db_handle2 = new DBController();
+          $db_handle->selectQuery("Select stage.stageid, stage.stagedesc from stage");
+          ?>
+        </select>
+      </div>
+    </div>
+    </div>
+
+        <!-- Submit -->
+    <div class="form-group">
+    <label class="col-md-4 control-label"></label>
+    <div class="col-md-4">
+      <button type="submit" name="SubmitButton" class="btn btn-warning">Change  <span class="glyphicon glyphicon-send"></span></button>
+    </div>
+    </div>
+
+
   </fieldset>
   </form>
 
