@@ -32,7 +32,7 @@
 	</style>
 
 	<!-- connect to DB -->
-		<?php
+<?php
 	require_once 'connection.php';
 	$con = connect();
 ?>
@@ -186,10 +186,13 @@
 
 		<!-- Position -->
 		<div class="form-group">
-		<label class="col-md-4 control-label">Positions</label>
-		<div class="col-md-4 checkContainer">
+		<label class="col-md-4 control-label">Position</label>
+		<div class="col-md-4 selectContainer">
 			<div class="input-group">
-				<?php checkQuery($con); close($con);?>
+				<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+				<select name="intPos" class="form-control selectpicker">
+					<?php query($con, "Select * from intposition where hiring=0"); ?>
+				</select>
 			</div>
 		</div>
 		</div>

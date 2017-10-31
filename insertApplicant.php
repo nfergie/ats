@@ -37,7 +37,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
-          <li class="active"><a href="#">Add Applicant</a></li>
+          <li class="active"><a href="applicant.php">Add Applicant</a></li>
           <li><a href="#">Contact</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -94,9 +94,10 @@
 		$pers = $_POST["pers_page"];
 		$notes = $_POST["notes"];
 		$HirEmpID = intval($_POST["hir_emp"]);
+		$intPosID = intval($_POST["intPos"]);
 		
 
-	$inApplicant = "insert into applicant(lastname, firstname, email, tel, appdate, notes, extposid, github, perspage, linkedin, stageid, HirEmpID) values('$last_name', '$first_name', '$email', '$phone', '$app_date', '$notes', $cur_pos, '$github', '$pers', '$link',2, $HirEmpID )";
+	$inApplicant = "insert into applicant(lastname, firstname, email, tel, appdate, notes, extposid, github, perspage, linkedin, stageid, HirEmpID, IntPosID, sala) values('$last_name', '$first_name', '$email', '$phone', '$app_date', '$notes', $cur_pos, '$github', '$pers', '$link',2, $HirEmpID, $intPosID, $sala)";
 
 
 	$result1 = mysqli_query($con, $inApplicant) or die ('Error in query');

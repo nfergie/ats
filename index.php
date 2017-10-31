@@ -8,10 +8,13 @@ $sql = "Select applicant.AppID,
   applicant.AppDate, 
   employee.firstname as HirFirstName, 
   stage.stagedesc, 
+  intposition.intposdesc,
   applicant.email, 
   applicant.linkedin,
   applicant.notes
 from applicant
+inner join intposition
+  on intposition.intposid=applicant.intposid
 inner join stage
   on stage.stageid=applicant.stageid 
 inner join hiringemp 
@@ -124,8 +127,9 @@ $faq = $db_handle->runQuery($sql);
             <th>ID</th>
             <th>First name</th>
             <th>Last name</th>
-            <th>Application Date</th>
+            <th>App Date</th>
             <th>POC</th>
+            <th>Position</th>
             <th>Stage</th>
             <th>E-mail</th>
             <th>LinkedIn</th>
@@ -141,9 +145,10 @@ $faq = $db_handle->runQuery($sql);
               <td><?php echo $faq[$k]["FirstName"]; ?></td>
               <td><?php echo $faq[$k]["LastName"]; ?></td>
               <td><?php echo $faq[$k]["AppDate"]; ?></td>
-              <td><?php echo $faq[$k]["HirFirstName"]?></td>
+              <td><?php echo $faq[$k]["HirFirstName"];?></td>
+              <td><?php echo $faq[$k]["intposdesc"]?></td>
               <td><?php echo $faq[$k]["stagedesc"]; ?></td>
-              <td><?php echo $faq[$k]["email"]?></td>
+              <td><?php echo $faq[$k]["email"];?></td>
               <td><?php echo $faq[$k]["linkedin"]; ?></td>
               <td contenteditable="true" onBlur="saveToDatabase(this,'notes','<?php echo $faq[$k]["AppID"]; ?>')" onClick="showEdit(this);"><?php echo $faq[$k]["notes"]; ?></td>
             </tr>
@@ -168,7 +173,7 @@ $faq = $db_handle->runQuery($sql);
         <select name="name" id="name" class="form-control selectpicker">
           <?php 
           $db_handle2 = new DBController();
-          $db_handle->selectQuery("Select applicant.appid, applicant.LastName from applicant");
+          $db_handle->selectQuery("Select applicant.appid, applicant.FirstName, applicant.LastName from applicant");
           ?>
         </select>
       </div>
@@ -190,6 +195,7 @@ $faq = $db_handle->runQuery($sql);
       </div>
     </div>
     </div>
+
 
         <!-- Submit -->
     <div class="form-group">
